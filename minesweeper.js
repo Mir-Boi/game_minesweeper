@@ -1,4 +1,4 @@
-Telegram.WebApp.expand();
+// Telegram.WebApp.expand();
 var board = [];
 var rows = 9;
 var columns = 7;
@@ -62,10 +62,13 @@ function setFlag() {
     if (flagEnabled) {
         flagEnabled = false;
         document.getElementById("flag-button").style.backgroundColor = "lightgray";
+        document.getElementById("flag-button").style.boxShadow = "5px 5px 4px 0px rgba(0,0,0,0.1)";
+
     }
     else {
         flagEnabled = true;
         document.getElementById("flag-button").style.backgroundColor = "darkgray";
+        document.getElementById("flag-button").style.boxShadow = "inset 10px 10px 15px -3px rgba(0,0,0,0.1)";
     }
 }
 
@@ -88,6 +91,7 @@ function clickTile() {
     if (minesLocation.includes(tile.id)) {
         // alert("GAME OVER");
         gameOver = true;
+        Telegram.WebApp.sendData("Не победил..");
         revealMines();
         return;
     }
@@ -162,6 +166,7 @@ function checkMine(r, c) {
     if (tilesClicked == rows * columns - minesCount) {
         document.getElementById("mines-count").innerText = "Cleared";
         gameOver = true;
+        Telegram.WebApp.sendData("Победил!");
     }
 
 }

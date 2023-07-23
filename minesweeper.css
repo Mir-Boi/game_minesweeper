@@ -5,10 +5,11 @@ body {
 }
 
 #board {
-    width: 400px;
-    height: 400px;
+    width: 348px;
+    height: 450px;
     border: 10px solid darkgray;
     background-color: lightgray;
+    /* color: */
 
     margin: 0 auto;
     display: flex;
@@ -69,4 +70,5 @@ body {
     font-size: 30px;
     background-color: lightgray;
     border: none;
+    box-shadow: 5px 5px 4px 0px rgba(0,0,0,0.1);
 }
