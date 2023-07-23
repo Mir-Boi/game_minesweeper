@@ -6,10 +6,11 @@ body {
 
 #board {
     width: 348px;
-    height: 450px;
+    height: 446px;
+    /* Выше такой пиксель дроч чтобы дивы встали супер плотненько */
     border: 10px solid darkgray;
+    border-radius: 7px;
     background-color: lightgray;
-    /* color: */
 
     margin: 0 auto;
     display: flex;
@@ -72,4 +73,69 @@ body {
     /* background-color: lightgray; */
     border: none;
     box-shadow: 5px 5px 4px 0px rgba(0,0,0,0.1);
+
+    /* Дальше идет не моё, но красивое :) */
+    position: relative;
+    padding-left: 15px;  /* Выравнивание визуально по центру */
+    border-radius: 7px;
+    border: 1px solid rgb(61, 106, 255);
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 2px;
+    background: transparent;
+    overflow: hidden;
+    box-shadow: 0 0 0 0 transparent;
+    -webkit-transition: all 0.2s ease-in;
+    -moz-transition: all 0.2s ease-in;
+    transition: all 0.2s ease-in;
 }
+#flag-button::before{
+content: '';
+    display: block;
+    width: 0px;
+    height: 86%;
+    position: absolute;
+    top: 7%;
+    left: 0%;
+    opacity: 0;
+    background: #fff;
+    box-shadow: 0 0 50px 30px #fff;
+    -webkit-transform: skewX(-20deg);
+    -moz-transform: skewX(-20deg);
+    -ms-transform: skewX(-20deg);
+    -o-transform: skewX(-20deg);
+    transform: skewX(-20deg);
+}
+
+#flag-button.pressed {
+    background: rgb(61, 106, 255);
+    box-shadow: 0 0 10px 5px rgba(0, 142, 236, 0.115);
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+}
+
+#flag-button.pressed::before {
+    -webkit-animation: sh02 0.5s 0s linear;
+    -moz-animation: sh02 0.5s 0s linear;
+    animation: sh02 0.5s 0s linear;
+}
+
+@keyframes sh02 {
+    from {
+      opacity: 0;
+      left: 0%;
+    }
+  
+    50% {
+      opacity: 1;
+    }
+  
+    to {
+      opacity: 0;
+      left: 100%;
+    }
+  }
+
+
+

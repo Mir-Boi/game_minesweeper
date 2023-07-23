@@ -61,23 +61,22 @@ function startGame() {
 function setFlag() {
     if (flagEnabled) {
         flagEnabled = false;
+        // document.getElementById("flag-button").style.backgroundColor = "var(--tg-theme-button-color, lightgray)";
         // document.getElementById("flag-button").style.backgroundColor = "lightgray";
-        document.getElementById("flag-button").style.backgroundColor = "var(--tg-theme-button-color, lightgray)";
-        document.getElementById("flag-button").style.boxShadow = "5px 5px 4px 0px rgba(150,150,150,0.1)";
-
+        // document.getElementById("flag-button").style.boxShadow = "5px 5px 4px 0px rgba(150,150,150,0.1)";
+        document.getElementById("flag-button").classList.remove("pressed");
     }
     else {
         flagEnabled = true;
-        document.getElementById("flag-button").style.backgroundColor = "var(--tg-theme-secondary-bg-color, darkgray)";
-        document.getElementById("flag-button").style.boxShadow = "inset 10px 10px 15px -3px rgba(150,150,150,0.1)";
-
+        // document.getElementById("flag-button").style.backgroundColor = "var(--tg-theme-secondary-bg-color, darkgray)";
         // document.getElementById("flag-button").style.backgroundColor = "darkgray";
-        // background-color: var(--tg-theme-button-color, red);
+        // document.getElementById("flag-button").style.boxShadow = "inset 10px 10px 15px -3px rgba(150,150,150,0.1)";
+        document.getElementById("flag-button").classList.add("pressed");
     }
 }
 
 function clickTile() {
-    if (gameOver || this.classList.contains("tile-clicked")) {
+    if (gameOver || this.classList.contains("tile-clicked")  || this.tile.innerText == "🚩") {
         return;
     }
 
