@@ -1,4 +1,4 @@
-// Telegram.WebApp.expand();
+Telegram.WebApp.expand();
 var board = [];
 var rows = 9;
 var columns = 7;
