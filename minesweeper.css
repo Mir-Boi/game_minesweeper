@@ -11,6 +11,7 @@ body {
     border: 10px solid darkgray;
     border-radius: 7px;
     background-color: lightgray;
+    /* color: */
 
     margin: 0 auto;
     display: flex;
@@ -73,11 +74,11 @@ body {
     /* background-color: lightgray; */
     border: none;
     box-shadow: 5px 5px 4px 0px rgba(0,0,0,0.1);
-}
+
     /* Дальше идет не моё, но красивое :) */
-    /* position: relative; */
-    /* padding-left: 15px; */  /* Выравнивание визуально по центру */
-    /* border-radius: 7px;
+    position: relative;
+    padding-left: 15px;  /* Выравнивание визуально по центру */
+    border-radius: 7px;
     border: 1px solid rgb(61, 106, 255);
     text-transform: uppercase;
     font-weight: 600;
@@ -135,7 +136,7 @@ content: '';
       opacity: 0;
       left: 100%;
     }
-  } */
+  }
 
 
 
