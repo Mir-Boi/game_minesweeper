@@ -76,11 +76,15 @@ function setFlag() {
 }
 
 function clickTile() {
-    if (gameOver || this.classList.contains("tile-clicked") || this.innerText == "🚩") {
+    if (gameOver || this.classList.contains("tile-clicked")) {
         return;
     }
 
     let tile = this;
+
+    if (!flagEnabled && this.innerText == "🚩") {  // если в режиме открытия и жмешь туда где есть флаг
+        return
+    }
     if (flagEnabled) {
         if (tile.innerText == "") {
             tile.innerText = "🚩";
