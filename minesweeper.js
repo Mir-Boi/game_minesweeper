@@ -1,8 +1,9 @@
+Telegram.WebApp.expand();
 var board = [];
-var rows = 8;
-var columns = 8;
+var rows = 9;
+var columns = 7;
 
-var minesCount = 8;
+var minesCount = 9;
 var minesLocation = []; // "2-2", "3-4", "2-1"
 
 var tilesClicked = 0; //goal to click all tiles except the ones containing mines
