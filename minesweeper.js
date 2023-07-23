@@ -76,7 +76,8 @@ function setFlag() {
 }
 
 function clickTile() {
-    if (gameOver || this.classList.contains("tile-clicked")  || this.tile.innerText == "🚩") {
+    // FIXME:   || this.tile.innerText == "🚩"
+    if (gameOver || this.classList.contains("tile-clicked")) {
         return;
     }
 
