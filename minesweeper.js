@@ -1,5 +1,4 @@
-// Telegram.WebApp.expand();
-// Telegram.WebApp.MainButton.show()
+Telegram.WebApp.expand();
 var board = [];
 var rows = 11;
 var columns = 7;
@@ -10,7 +9,6 @@ var minesLocation = []; // "2-2", "3-4", "2-1"
 var tilesClicked = 0; //goal to click all tiles except the ones containing mines
 var flagEnabled = false;
 let flag = document.getElementById("flag-button");
-console.log(flag);
 
 var gameOver = false;
 
@@ -100,15 +98,15 @@ function clickTile() {
 
     if (minesLocation.includes(tile.id)) {
         gameOver = true;
-        // TODO: sendData
         revealMines();
         flag.classList.add("pressed");
         flag.style.width = "250px";
         flag.style.padding = "0";  // это то что я подравнивал чтобы визуально отцентровать
         flag.innerHTML = "Поражение";
         flag.removeEventListener("click", setFlag);
+        // TODO: sendData
         flag.addEventListener("click", () => {
-            Telegram.WebApp.sendData("Не победил..");
+            Telegram.WebApp.sendData(JSON.stringify({is_win:false, time:999}));
         });
         return;
     }
@@ -184,6 +182,15 @@ function checkMine(r, c) {
         // document.getElementById("mines-count").innerText = "Cleared";
         gameOver = true;
         // TODO: sendData
+        flag.classList.add("pressed");
+        flag.style.width = "200px";
+        flag.style.padding = "0";  // это то что я подравнивал чтобы визуально отцентровать
+        flag.innerHTML = "Победа";
+        flag.removeEventListener("click", setFlag);
+        // TODO: sendData
+        flag.addEventListener("click", () => {
+            Telegram.WebApp.sendData(JSON.stringify({is_win:true, time:999}));
+        });
         // Telegram.WebApp.sendData("Победил!");
     }
 
