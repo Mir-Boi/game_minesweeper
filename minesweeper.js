@@ -1,6 +1,6 @@
-// Telegram.WebApp.expand();
+Telegram.WebApp.expand();
 var board = [];
-var rows = 10;
+var rows = 11;
 var columns = 7;
 
 var minesCount = 9;
