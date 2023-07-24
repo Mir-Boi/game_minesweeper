@@ -1,6 +1,6 @@
 // Telegram.WebApp.expand();
 var board = [];
-var rows = 9;
+var rows = 10;
 var columns = 7;
 
 var minesCount = 9;
@@ -37,7 +37,7 @@ function setMines() {
 
 
 function startGame() {
-    document.getElementById("mines-count").innerText = minesCount;
+    // document.getElementById("mines-count").innerText = minesCount;
     document.getElementById("flag-button").addEventListener("click", setFlag);
     setMines();
 

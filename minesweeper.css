@@ -10,7 +10,7 @@ h1 {
 
 #board {
     width: 348px;
-    height: 446px;
+    height: 496px;
     /* Выше такой пиксель дроч чтобы дивы встали супер плотненько */
     border: 10px solid darkgray;
     border-radius: 7px;
