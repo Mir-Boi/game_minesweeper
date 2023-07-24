@@ -1,4 +1,5 @@
 Telegram.WebApp.expand();
+Telegram.WebApp.MainButton.show()
 var board = [];
 var rows = 11;
 var columns = 7;
@@ -99,7 +100,7 @@ function clickTile() {
         // alert("GAME OVER");
         gameOver = true;
         // TODO: sendData
-        Telegram.WebApp.sendData("Не победил..");
+        // Telegram.WebApp.sendData("Не победил..");
         revealMines();
         return;
     }
@@ -171,11 +172,12 @@ function checkMine(r, c) {
         checkMine(r+1, c+1);    //bottom right
     }
 
+    console.log(`Победное условие: tilesClicked(${tilesClicked}) == ${rows * columns - minesCount}`)
     if (tilesClicked == rows * columns - minesCount) {
-        document.getElementById("mines-count").innerText = "Cleared";
+        // document.getElementById("mines-count").innerText = "Cleared";
         gameOver = true;
         // TODO: sendData
-        Telegram.WebApp.sendData("Победил!");
+        // Telegram.WebApp.sendData("Победил!");
     }
 
 }

@@ -144,3 +144,68 @@ content: '';
 
 
 
+
+
+/* Победа/поражение */
+
+#container {
+    position: absolute;
+    left: 50%;
+    top: 20%;
+    transform: translateX(-50%);
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+}
+
+
+
+button {
+    width: 15em;
+    position: relative;
+    height: 18em;
+    border: 3px ridge #149CEA;
+    outline: none;
+    /* background-color: transparent; */
+    background: rgba( 0, 0, 0, 0.3);
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    color: white;
+    transition: 2.5s;
+    border-radius: 0.3em;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  button::after {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 3%;
+    width: 95%;
+    height: 40%;
+    /* background-color: #212121; */
+    transition: 2.5s;
+    transform-origin: center;
+  }
+  
+  button::before {
+    content: "";
+    transform-origin: center;
+    position: absolute;
+    top: 80%;
+    left: 3%;
+    width: 95%;
+    height: 40%;
+    /* background-color: #212121; */
+    transition: 2.5s;
+  }
+  
+  button:hover::before, button:hover::after {
+    transform: scale(0)
+  }
+  
+  button:hover {
+    box-shadow: inset 0px 0px 45px #1479EA;
+  }
+  
