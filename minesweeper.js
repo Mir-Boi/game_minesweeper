@@ -1,5 +1,5 @@
-Telegram.WebApp.expand();
-Telegram.WebApp.MainButton.show()
+// Telegram.WebApp.expand();
+// Telegram.WebApp.MainButton.show()
 var board = [];
 var rows = 11;
 var columns = 7;
@@ -9,6 +9,8 @@ var minesLocation = []; // "2-2", "3-4", "2-1"
 
 var tilesClicked = 0; //goal to click all tiles except the ones containing mines
 var flagEnabled = false;
+let flag = document.getElementById("flag-button");
+console.log(flag);
 
 var gameOver = false;
 
@@ -65,14 +67,14 @@ function setFlag() {
         // document.getElementById("flag-button").style.backgroundColor = "var(--tg-theme-button-color, lightgray)";
         // document.getElementById("flag-button").style.backgroundColor = "lightgray";
         // document.getElementById("flag-button").style.boxShadow = "5px 5px 4px 0px rgba(150,150,150,0.1)";
-        document.getElementById("flag-button").classList.remove("pressed");
+        flag.classList.remove("pressed");
     }
     else {
         flagEnabled = true;
         // document.getElementById("flag-button").style.backgroundColor = "var(--tg-theme-secondary-bg-color, darkgray)";
         // document.getElementById("flag-button").style.backgroundColor = "darkgray";
         // document.getElementById("flag-button").style.boxShadow = "inset 10px 10px 15px -3px rgba(150,150,150,0.1)";
-        document.getElementById("flag-button").classList.add("pressed");
+        flag.classList.add("pressed");
     }
 }
 
@@ -97,11 +99,17 @@ function clickTile() {
     }
 
     if (minesLocation.includes(tile.id)) {
-        // alert("GAME OVER");
         gameOver = true;
         // TODO: sendData
-        // Telegram.WebApp.sendData("Не победил..");
         revealMines();
+        flag.classList.add("pressed");
+        flag.style.width = "250px";
+        flag.style.padding = "0";  // это то что я подравнивал чтобы визуально отцентровать
+        flag.innerHTML = "Поражение";
+        flag.removeEventListener("click")
+        flag.addEventListener("click", () => {
+            Telegram.WebApp.sendData("Не победил..");
+        });
         return;
     }
 
@@ -172,7 +180,6 @@ function checkMine(r, c) {
         checkMine(r+1, c+1);    //bottom right
     }
 
-    console.log(`Победное условие: tilesClicked(${tilesClicked}) == ${rows * columns - minesCount}`)
     if (tilesClicked == rows * columns - minesCount) {
         // document.getElementById("mines-count").innerText = "Cleared";
         gameOver = true;
