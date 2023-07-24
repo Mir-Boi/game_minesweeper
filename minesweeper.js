@@ -41,7 +41,7 @@ function setMines() {
 
 function startGame() {
     // document.getElementById("mines-count").innerText = minesCount;
-    document.getElementById("flag-button").addEventListener("click", setFlag);
+    flag.addEventListener("click", setFlag);
     setMines();
 
     //populate our board
@@ -106,7 +106,7 @@ function clickTile() {
         flag.style.width = "250px";
         flag.style.padding = "0";  // это то что я подравнивал чтобы визуально отцентровать
         flag.innerHTML = "Поражение";
-        flag.removeEventListener("click")
+        flag.removeEventListener("click", setFlag);
         flag.addEventListener("click", () => {
             Telegram.WebApp.sendData("Не победил..");
         });
