@@ -146,7 +146,7 @@ function clickTile() {
         timer_on = true;
         interval = setInterval(updateTime, 1000);
     };
-    sound_empty.currentTime = 0;
+    sound_empty.currentTime = 0;  // чтобы проигрывалось каждый раз, не дожидаясь окончания другого звука
     sound_empty.play();
 }
 
