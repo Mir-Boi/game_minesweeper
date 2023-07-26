@@ -1,4 +1,4 @@
-Telegram.WebApp.expand();
+// Telegram.WebApp.expand();
 var board = [];
 var rows = 11;
 var columns = 7;
@@ -67,8 +67,6 @@ function startGame() {
         }
         board.push(row);
     }
-
-    console.log(board);
 }
 
 function setFlag() {
@@ -116,18 +114,17 @@ function clickTile() {
         if (tilesClicked > 7) {  // если нажато 8+ клеток
             var data = {
                 isWin: false,  // победа?
-                secondsSpent:seconds,  // сколько секунд затрачено
-                doSpentEnegy:true  // надо тратить энергию?
+                secondsSpent: seconds,  // сколько секунд затрачено
+                doSpentEnegy: true  // надо тратить энергию?
             }
         }
-        else {
+        else {  // если потратил <= 7
             var data = {
                 isWin: false,  // победа?
-                secondsSpent:seconds,  // сколько секунд затрачено
-                doSpentEnegy:false  // надо тратить энергию?
+                secondsSpent: seconds,  // сколько секунд затрачено
+                doSpentEnegy: false  // надо тратить энергию?
             }
         }
-        
         flag.addEventListener("click", () => {
             Telegram.WebApp.sendData(JSON.stringify(data));
         });
@@ -225,7 +222,6 @@ function checkMine(r, c) {
         flag.addEventListener("click", () => {
             Telegram.WebApp.sendData(JSON.stringify(data));
         });
-        // Telegram.WebApp.sendData("Победил!");
     }
 
 }
