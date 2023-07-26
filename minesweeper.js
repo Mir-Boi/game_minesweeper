@@ -16,6 +16,21 @@ window.onload = function() {
     startGame();
 }
 
+// ------------------- СЕКУНДОМЕР -------------------
+let timer_on = false;
+let seconds = 0;
+let interval;
+timer_on = false;
+
+
+function updateTime() {
+  seconds++;
+  console.log(seconds)
+}
+// --------------------------------------------------
+
+clearInterval(interval);  // FIXME:
+
 function setMines() {
     // minesLocation.push("2-2");
     // minesLocation.push("2-3");
@@ -38,7 +53,6 @@ function setMines() {
 
 
 function startGame() {
-    // document.getElementById("mines-count").innerText = minesCount;
     flag.addEventListener("click", setFlag);
     setMines();
 
@@ -61,18 +75,10 @@ function startGame() {
 
 function setFlag() {
     if (flagEnabled) {
-        flagEnabled = false;
-        // document.getElementById("flag-button").style.backgroundColor = "var(--tg-theme-button-color, lightgray)";
-        // document.getElementById("flag-button").style.backgroundColor = "lightgray";
-        // document.getElementById("flag-button").style.boxShadow = "5px 5px 4px 0px rgba(150,150,150,0.1)";
-        flag.classList.remove("pressed");
+        flagEnabled = false;flag.classList.remove("pressed");
     }
     else {
-        flagEnabled = true;
-        // document.getElementById("flag-button").style.backgroundColor = "var(--tg-theme-secondary-bg-color, darkgray)";
-        // document.getElementById("flag-button").style.backgroundColor = "darkgray";
-        // document.getElementById("flag-button").style.boxShadow = "inset 10px 10px 15px -3px rgba(150,150,150,0.1)";
-        flag.classList.add("pressed");
+        flagEnabled = true;flag.classList.add("pressed");
     }
 }
 
@@ -81,11 +87,12 @@ function clickTile() {
         return;
     }
 
-    let tile = this;
-
+    
     if (!flagEnabled && this.innerText == "🚩") {  // если в режиме открытия и жмешь туда где есть флаг
         return
     }
+
+    let tile = this;
     if (flagEnabled) {
         if (tile.innerText == "") {
             tile.innerText = "🚩";
@@ -99,11 +106,12 @@ function clickTile() {
     if (minesLocation.includes(tile.id)) {
         gameOver = true;
         revealMines();
-        flag.classList.add("pressed");
-        flag.style.width = "250px";
+        flag.classList.add("pressed");  // делаем кнопку красивой
+        flag.style.width = "250px";  // расширяем кнопку
         flag.style.padding = "0";  // это то что я подравнивал чтобы визуально отцентровать
         flag.innerHTML = "Поражение";
-        flag.removeEventListener("click", setFlag);
+        flag.removeEventListener("click", setFlag);  // убираем установку/уборку флага по нажатию
+        Telegram.WebApp.HapticFeedback.notificationOccurred('error');  // вибрация
         // TODO: sendData
         flag.addEventListener("click", () => {
             Telegram.WebApp.sendData(JSON.stringify({is_win:false, time:999}));
@@ -116,6 +124,11 @@ function clickTile() {
     let r = parseInt(coords[0]);
     let c = parseInt(coords[1]);
     checkMine(r, c);
+    // Выше мы проверили, что да, плитка открываема и мы её открываем
+    if (!timer_on) {
+        timer_on = true;
+        interval = setInterval(updateTime, 1000);
+    };
 
 }
 
@@ -188,7 +201,7 @@ function checkMine(r, c) {
         flag.innerHTML = "Победа";
         flag.removeEventListener("click", setFlag);
         // TODO: sendData
-        flag.addEventListener("click", () => {
+        flag.addEventListener("click", () => { q
             Telegram.WebApp.sendData(JSON.stringify({is_win:true, time:999}));
         });
         // Telegram.WebApp.sendData("Победил!");
