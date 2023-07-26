@@ -1,4 +1,4 @@
-Telegram.WebApp.expand();
+// Telegram.WebApp.expand();
 var board = [];
 var rows = 11;
 var columns = 7;
@@ -25,11 +25,9 @@ timer_on = false;
 
 function updateTime() {
   seconds++;
-  console.log(seconds)
 }
 // --------------------------------------------------
 
-clearInterval(interval);  // FIXME:
 
 function setMines() {
     // minesLocation.push("2-2");
@@ -112,9 +110,10 @@ function clickTile() {
         flag.innerHTML = "Поражение";
         flag.removeEventListener("click", setFlag);  // убираем установку/уборку флага по нажатию
         Telegram.WebApp.HapticFeedback.notificationOccurred('error');  // вибрация
+        clearInterval(interval);  // останавливаем таймер
         // TODO: sendData
         flag.addEventListener("click", () => {
-            Telegram.WebApp.sendData(JSON.stringify({is_win:false, time:999}));
+            Telegram.WebApp.sendData(JSON.stringify({is_win:false, secondsSpent:seconds}));
         });
         return;
     }
@@ -200,9 +199,10 @@ function checkMine(r, c) {
         flag.style.padding = "0";  // это то что я подравнивал чтобы визуально отцентровать
         flag.innerHTML = "Победа";
         flag.removeEventListener("click", setFlag);
+        clearInterval(interval);  // останавливаем таймер
         // TODO: sendData
         flag.addEventListener("click", () => { q
-            Telegram.WebApp.sendData(JSON.stringify({is_win:true, time:999}));
+            Telegram.WebApp.sendData(JSON.stringify({is_win:true, secondsSpent:seconds}));
         });
         // Telegram.WebApp.sendData("Победил!");
     }
