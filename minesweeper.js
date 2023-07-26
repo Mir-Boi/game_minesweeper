@@ -1,4 +1,4 @@
-// Telegram.WebApp.expand();
+Telegram.WebApp.expand();
 var board = [];
 var rows = 11;
 var columns = 7;
@@ -112,8 +112,24 @@ function clickTile() {
         Telegram.WebApp.HapticFeedback.notificationOccurred('error');  // вибрация
         clearInterval(interval);  // останавливаем таймер
         // TODO: sendData
+        
+        if (tilesClicked > 7) {  // если нажато 8+ клеток
+            const data = {
+                isWin: false,  // победа?
+                secondsSpent:seconds,  // сколько секунд затрачено
+                doSpentEnegy:true  // надо тратить энергию?
+            }
+        }
+        else {
+            const data = {
+                isWin: false,  // победа?
+                secondsSpent:seconds,  // сколько секунд затрачено
+                doSpentEnegy:false  // надо тратить энергию?
+            }
+        }
+        
         flag.addEventListener("click", () => {
-            Telegram.WebApp.sendData(JSON.stringify({is_win:false, secondsSpent:seconds}));
+            Telegram.WebApp.sendData(JSON.stringify(data));
         });
         return;
     }
@@ -201,8 +217,13 @@ function checkMine(r, c) {
         flag.removeEventListener("click", setFlag);
         clearInterval(interval);  // останавливаем таймер
         // TODO: sendData
-        flag.addEventListener("click", () => { q
-            Telegram.WebApp.sendData(JSON.stringify({is_win:true, secondsSpent:seconds}));
+        const data = {
+            isWin: true,  // победа?
+            secondsSpent:seconds,  // сколько секунд затрачено
+            doSpentEnegy:true  // надо тратить энергию?
+        }
+        flag.addEventListener("click", () => {
+            Telegram.WebApp.sendData(JSON.stringify(data));
         });
         // Telegram.WebApp.sendData("Победил!");
     }
