@@ -111,17 +111,17 @@ function clickTile() {
         flag.removeEventListener("click", setFlag);  // убираем установку/уборку флага по нажатию
         Telegram.WebApp.HapticFeedback.notificationOccurred('error');  // вибрация
         clearInterval(interval);  // останавливаем таймер
-        // TODO: sendData
         
+        // TODO: sendData
         if (tilesClicked > 7) {  // если нажато 8+ клеток
-            const data = {
+            var data = {
                 isWin: false,  // победа?
                 secondsSpent:seconds,  // сколько секунд затрачено
                 doSpentEnegy:true  // надо тратить энергию?
             }
         }
         else {
-            const data = {
+            var data = {
                 isWin: false,  // победа?
                 secondsSpent:seconds,  // сколько секунд затрачено
                 doSpentEnegy:false  // надо тратить энергию?
