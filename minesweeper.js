@@ -1,4 +1,4 @@
-// Telegram.WebApp.expand();
+Telegram.WebApp.expand();
 var board = [];
 var rows = 11;
 var columns = 7;
@@ -15,6 +15,10 @@ var gameOver = false;
 window.onload = function() {
     startGame();
 }
+
+var sound_empty = new Audio("sounds/empty.mp3");
+var sound_wrong = new Audio("sounds/wrong.mp3");
+var sound_win = new Audio("sounds/win.mp3");
 
 // ------------------- СЕКУНДОМЕР -------------------
 let timer_on = false;
@@ -109,16 +113,17 @@ function clickTile() {
         flag.removeEventListener("click", setFlag);  // убираем установку/уборку флага по нажатию
         Telegram.WebApp.HapticFeedback.notificationOccurred('error');  // вибрация
         clearInterval(interval);  // останавливаем таймер
-        
+        sound_wrong.play();
+
         // TODO: sendData
-        if (tilesClicked > 7) {  // если нажато 8+ клеток
+        if (tilesClicked > 9) {  // если нажато 10+ клеток
             var data = {
                 isWin: false,  // победа?
                 secondsSpent: seconds,  // сколько секунд затрачено
                 doSpentEnegy: true  // надо тратить энергию?
             }
         }
-        else {  // если потратил <= 7
+        else {  // если потратил <= 9
             var data = {
                 isWin: false,  // победа?
                 secondsSpent: seconds,  // сколько секунд затрачено
@@ -141,7 +146,7 @@ function clickTile() {
         timer_on = true;
         interval = setInterval(updateTime, 1000);
     };
-
+    sound_empty.play();
 }
 
 function revealMines() {
@@ -206,13 +211,13 @@ function checkMine(r, c) {
     if (tilesClicked == rows * columns - minesCount) {
         // document.getElementById("mines-count").innerText = "Cleared";
         gameOver = true;
-        // TODO: sendData
         flag.classList.add("pressed");
         flag.style.width = "200px";
         flag.style.padding = "0";  // это то что я подравнивал чтобы визуально отцентровать
         flag.innerHTML = "Победа";
         flag.removeEventListener("click", setFlag);
         clearInterval(interval);  // останавливаем таймер
+
         // TODO: sendData
         const data = {
             isWin: true,  // победа?
@@ -222,6 +227,8 @@ function checkMine(r, c) {
         flag.addEventListener("click", () => {
             Telegram.WebApp.sendData(JSON.stringify(data));
         });
+
+        sound_win.play();
     }
 
 }
