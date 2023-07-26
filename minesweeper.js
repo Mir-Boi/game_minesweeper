@@ -105,6 +105,7 @@ function clickTile() {
 
     if (minesLocation.includes(tile.id)) {
         gameOver = true;
+        sound_wrong.play();
         revealMines();
         flag.classList.add("pressed");  // делаем кнопку красивой
         flag.style.width = "250px";  // расширяем кнопку
@@ -113,7 +114,6 @@ function clickTile() {
         flag.removeEventListener("click", setFlag);  // убираем установку/уборку флага по нажатию
         Telegram.WebApp.HapticFeedback.notificationOccurred('error');  // вибрация
         clearInterval(interval);  // останавливаем таймер
-        sound_wrong.play();
 
         // TODO: sendData
         if (tilesClicked > 9) {  // если нажато 10+ клеток
@@ -211,6 +211,7 @@ function checkMine(r, c) {
     if (tilesClicked == rows * columns - minesCount) {
         // document.getElementById("mines-count").innerText = "Cleared";
         gameOver = true;
+        sound_win.play();
         flag.classList.add("pressed");
         flag.style.width = "200px";
         flag.style.padding = "0";  // это то что я подравнивал чтобы визуально отцентровать
@@ -227,8 +228,6 @@ function checkMine(r, c) {
         flag.addEventListener("click", () => {
             Telegram.WebApp.sendData(JSON.stringify(data));
         });
-
-        sound_win.play();
     }
 
 }
