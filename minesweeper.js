@@ -19,6 +19,8 @@ window.onload = function() {
 var sound_empty = new Audio("sounds/empty.mp3");
 var sound_wrong = new Audio("sounds/wrong.mp3");
 var sound_win = new Audio("sounds/win.mp3");
+var sound_changeMode = new Audio("sounds/changeMode.mp3")
+var sound_setFlag = new Audio("sounds/setFlag.mp3");
 
 // ------------------- СЕКУНДОМЕР -------------------
 let timer_on = false;
@@ -74,6 +76,10 @@ function startGame() {
 }
 
 function setFlag() {
+    // Проигрываем звук смены режима
+    sound_changeMode.currentTime = 0;
+    sound_changeMode.play();
+    
     if (flagEnabled) {
         flagEnabled = false;flag.classList.remove("pressed");
     }
@@ -94,6 +100,10 @@ function clickTile() {
 
     let tile = this;
     if (flagEnabled) {
+        // Проигрываем звук установки/снятия флага
+        sound_setFlag.currentTime = 0;
+        sound_setFlag.play();
+
         if (tile.innerText == "") {
             tile.innerText = "🚩";
         }
