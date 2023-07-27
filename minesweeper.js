@@ -19,8 +19,8 @@ window.onload = function() {
 var sound_empty = new Audio("sounds/empty.mp3");
 var sound_wrong = new Audio("sounds/wrong.mp3");
 var sound_win = new Audio("sounds/win.mp3");
-var sound_changeMode = new Audio("sounds/changeMode.mp3")
-var sound_setFlag = new Audio("sounds/setFlag.mp3");
+var sound_changeMode = new Audio("sounds/changeMode.wav")
+var sound_setFlag = new Audio("sounds/setFlag.wav");
 
 // ------------------- СЕКУНДОМЕР -------------------
 let timer_on = false;
@@ -79,7 +79,7 @@ function setFlag() {
     // Проигрываем звук смены режима
     sound_changeMode.currentTime = 0;
     sound_changeMode.play();
-    
+
     if (flagEnabled) {
         flagEnabled = false;flag.classList.remove("pressed");
     }
