@@ -1,5 +1,5 @@
 :root {
-    --rows_count: 11; 
+    --col_count: 7; 
 }
 
 body {
@@ -13,8 +13,11 @@ h1 {
 }
 
 #board {
-    width: 95vw;
-    height: 95vw;
+    /* width: 348px;
+    height: 546px; */
+    width: 94.82vw;
+    height: 94.82vw;
+    /* Выше такой дроч чтобы ровно встало.. */
     border: 10px solid darkgray;
     border-radius: 7px;
     background-color: lightgray;
@@ -25,10 +28,10 @@ h1 {
 }
 
 #board div {
-    /* width: 48px; */
-    /* height: 48px; */
-    width: calc(95vw / var(--rows_count));
-    height: calc(95vw / var(--rows_count));
+    /* width: 48px;
+    height: 48px; */
+    width: calc(95vw / var(--col_count) - 2px);
+    height: calc(95vw / var(--col_count));
     border: 1px solid whitesmoke;
 
     /* text */
