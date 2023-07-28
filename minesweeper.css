@@ -1,3 +1,7 @@
+:root {
+    --rows_count: 8; 
+}
+
 body {
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
@@ -9,7 +13,7 @@ h1 {
 }
 
 #board {
-    width: 348px;
+    width: calc(100vw - 10px);
     height: 546px;
     /* Выше такой пиксель дроч чтобы дивы встали супер плотненько */
     border: 10px solid darkgray;
@@ -22,8 +26,10 @@ h1 {
 }
 
 #board div {
-    width: 48px;
-    height: 48px;
+    /* width: 48px; */
+    /* height: 48px; */
+    width: calc(100vw / var(--rows_count) - 5px);
+    height: calc(100vw / var(--rows_count) - 5px);;
     border: 1px solid whitesmoke;
 
     /* text */
