@@ -13,8 +13,8 @@ h1 {
 }
 
 #board {
-    width: calc(100vw - 10px);
-    height: 546px;
+    width: 95vw;
+    height: 95vw;
     /* Выше такой пиксель дроч чтобы дивы встали супер плотненько */
     border: 10px solid darkgray;
     border-radius: 7px;
@@ -28,8 +28,8 @@ h1 {
 #board div {
     /* width: 48px; */
     /* height: 48px; */
-    width: calc(100vw / var(--rows_count) - 5px);
-    height: calc(100vw / var(--rows_count) - 5px);;
+    width: calc(95vw / var(--rows_count));
+    height: calc(95vw / var(--rows_count));
     border: 1px solid whitesmoke;
 
     /* text */
