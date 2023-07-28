@@ -1,5 +1,5 @@
 :root {
-    --rows_count: 7; 
+    --rows_count: 11; 
 }
 
 body {
@@ -15,7 +15,6 @@ h1 {
 #board {
     width: 95vw;
     height: 95vw;
-    /* Выше такой пиксель дроч чтобы дивы встали супер плотненько */
     border: 10px solid darkgray;
     border-radius: 7px;
     background-color: lightgray;
