@@ -2,6 +2,12 @@
     --col_count: 7; 
 }
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
@@ -15,14 +21,14 @@ h1 {
 #board {
     /* width: 348px;
     height: 546px; */
-    width: 94.82vw;
-    height: 94.82vw;
+    width: 95vw;
+    height: min-content;
     /* Выше такой дроч чтобы ровно встало.. */
     border: 10px solid darkgray;
     border-radius: 7px;
     background-color: lightgray;
 
-    margin: 0 auto;
+    margin: 10px auto;
     display: flex;
     flex-wrap: wrap;
 }
@@ -30,8 +36,9 @@ h1 {
 #board div {
     /* width: 48px;
     height: 48px; */
-    width: calc(95vw / var(--col_count) - 2px);
-    height: calc(95vw / var(--col_count));
+    /* TODO: ещё min() наколдовать */
+    width: calc(95vw / var(--col_count) - 2.8px);
+    height: calc(95vw / var(--col_count) - 2.8px);
     border: 1px solid whitesmoke;
 
     /* text */
