@@ -19,28 +19,28 @@ h1 {
 }
 
 #board {
-    /* width: 348px;
-    height: 546px; */
-    width: 95vw;
+    width: min-content;
     height: min-content;
-    /* Выше такой дроч чтобы ровно встало.. */
-    border: 10px solid darkgray;
+    
+    border: 1.5vw solid darkgray;
     border-radius: 7px;
     background-color: lightgray;
 
     margin: 10px auto;
-    display: flex;
-    flex-wrap: wrap;
 }
 
-#board div {
-    /* width: 48px;
-    height: 48px; */
-    /* TODO: ещё min() наколдовать */
-    width: calc(95vw / var(--col_count) - 2.8px);
-    height: calc(95vw / var(--col_count) - 2.8px);
-    border: 1px solid whitesmoke;
+.row {
+    /* Ширина = ширина доски минус её рамки умноженное на два */
+    width: 92vw;  
+    display: flex;
+    flex-direction: row;
+}
 
+/* Настройка каждой из клеток */
+#board .row div {
+    width: calc(95vw / var(--col_count));
+    height: calc(95vw / var(--col_count));
+    border: 1px solid whitesmoke;
     /* text */
     font-size: 30px;
     display: flex;

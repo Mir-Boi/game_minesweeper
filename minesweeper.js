@@ -63,15 +63,20 @@ function startGame() {
     //populate our board
     for (let r = 0; r < rows; r++) {
         let row = [];
+        let visual_row = document.createElement("div");
+        visual_row.classList.add("row");
         for (let c = 0; c < columns; c++) {
             //<div id="0-0"></div>
             let tile = document.createElement("div");
             tile.id = r.toString() + "-" + c.toString();
             tile.addEventListener("click", clickTile);
             document.getElementById("board").append(tile);
-            row.push(tile);
+            row.push(tile);  // передача клетки в технический ряд
+            visual_row.append(tile);
+            
         }
-        board.push(row);
+        document.getElementById("board").append(visual_row);  // закидываем ряд в доску
+        board.push(row);  // передача технического ряда в техническую доску
     }
 }
 
