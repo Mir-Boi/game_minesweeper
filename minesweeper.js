@@ -1,4 +1,3 @@
-Telegram.WebApp.expand();
 var board = [];
 var rows = 11;
 var columns = 7;
@@ -258,3 +257,5 @@ function checkTile(r, c) {
     }
     return 0;
 }
+
+Telegram.WebApp.expand();
