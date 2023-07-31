@@ -259,3 +259,4 @@ function checkTile(r, c) {
 }
 
 Telegram.WebApp.expand();
+Telegram.WebApp.enableClosingConfirmation();  // вышел - проиграл
