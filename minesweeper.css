@@ -85,7 +85,7 @@ h1 {
 }
 
 #flag-button {
-    width: 100px;
+    width: 75vw;
     height: 50px;
     font-size: 30px;
     color: var(--tg-theme-button-text-color);
