@@ -111,7 +111,7 @@ h1 {
     transition: all 0.2s ease-in;
 }
 #flag-button::before{
-content: '';
+    content: '';
     display: block;
     width: 0px;
     height: 86%;

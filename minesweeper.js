@@ -259,4 +259,4 @@ function checkTile(r, c) {
 }
 
 Telegram.WebApp.expand();
-Telegram.WebApp.enableClosingConfirmation();  // вышел - проиграл
+Telegram.WebApp.enableClosingConfirmation();  // вышел - не зассчитывается попытка
